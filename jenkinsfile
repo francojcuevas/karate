@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+
+  parameters {
+    string(name: 'tag', description: 'tag para ejecucion de escenario o plan de pruebas')
+  }
+  tools {
+    gradle 'gradle-7.6'
+  }
+
+  stages {
+    stage('git clone') {
+      steps {
+
+        git branch: 'master', url: 'https://github.com/francojcuevas/NivelacionCucumberGradle'
+        sh 'pwd'
+      }
+    }
+
+    stage('exec gradle') {
+      steps {
+        sh 'gradle --version'
+        sh 'gradle runWithCucumber -P tags=${tag}'
+        sh 'ls'
+      }
+
+    }
+  }
+}
