@@ -15,7 +15,6 @@ public class TsoftSteps {
 
     @Given("Ingresar a la pagina")
     public void ingresarAwebapp() {
-        System.out.println("ingreso a Tsoft");
         tsoftPage.dirigirseASitioWeb();
     }
     //1° Escenario
